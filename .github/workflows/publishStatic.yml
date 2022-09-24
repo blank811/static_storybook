@@ -25,6 +25,7 @@ jobs:
         with:
           node-version: 16
         # install dependenices
+      - name: Install dependenices
         run: |
           npm install
           npm run build-storybook
