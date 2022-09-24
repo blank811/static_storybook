@@ -5,6 +5,9 @@ on:
   push:
     branches:
       - "main"
+  schedule:
+    # triggers the workflow to run at 5:30 UTC every Monday
+    - cron: "30 5 * * 1"
 
 # the jobs to run this ci
 jobs:
@@ -37,7 +40,7 @@ jobs:
           cp -rf main/public ./
           npm install
           npm run build-storybook
-          sed "s/<head>/<head><link rel='icon' href='favicon.ico' type='image\/x-icon'/" storybook-static/index.html
+          sed -i "s/<head>/<head><link rel='icon' href='favicon.ico' type='image\/x-icon'/" storybook-static/index.html
       # Deploy github page
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
