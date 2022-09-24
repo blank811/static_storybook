@@ -13,13 +13,16 @@ jobs:
     runs-on: ubuntu-latest
     # the steps to run this jobs
     steps:
-      # pull the github repo code
-      - name: Pull the repo
+      # pull the storybook repo code
+      - name: Pull the storybook repo
         uses: actions/checkout@v3
         with:
           repository: dataReachable/dr_Front_ComponentStoryBook
           ref: development
           token: ${{ secrets.STATIC_STORYBOOK_TOKEN }}
+      # pull the main branches code
+      - name: Pull the main branches code
+        uses: actions/checkout@v3
       # use nodejs
       - name: Use Node.js
         uses: actions/setup-node@v3
@@ -30,6 +33,7 @@ jobs:
         run: |
           npm install
           npm run build-storybook
+          sed "s/<head>/<head><link rel='icon' href='favicon.ico' type='image\/x-icon'/" storybook-static/index.html
       # Deploy github page
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4

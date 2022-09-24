@@ -1,3 +1,4 @@
+![alt text](/logo.svg "Logo")
 # static_storybook
 online access to the component library
 
