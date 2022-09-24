@@ -15,17 +15,17 @@ jobs:
     steps:
       # pull the github repo code
       - name: Pull the repo
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
         with:
           repository: dataReachable/dr_Front_ComponentStoryBook
           ref: development
       # use nodejs
       - name: Use Node.js
-      - uses: actions/setup-node@v3
+        uses: actions/setup-node@v3
         with:
           node-version: 16
-      # install dependenices
-      - run: |
+        # install dependenices
+        run: |
           npm install
           npm run build-storybook
       # Deploy github page
