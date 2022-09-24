@@ -1,0 +1,36 @@
+#work flow name
+name: Publish Static Storybook
+# when to trigger this work flow
+on:
+  push:
+    branches:
+      - "main"
+
+# the jobs to run this ci
+jobs:
+  # create a jobs name is build
+  build:
+    runs-on: ubuntu-latest
+    # the steps to run this jobs
+    steps:
+      # pull the github repo code
+      - name: Pull the repo
+      - uses: actions/checkout@v3
+        with:
+          repository: dataReachable/dr_Front_ComponentStoryBook
+          ref: development
+      # use nodejs
+      - name: Use Node.js
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      # install dependenices
+      - run: |
+          npm install
+          npm run build-storybook
+      # Deploy github page
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
