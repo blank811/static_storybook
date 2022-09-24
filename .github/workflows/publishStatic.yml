@@ -19,6 +19,7 @@ jobs:
         with:
           repository: dataReachable/dr_Front_ComponentStoryBook
           ref: development
+          token: ${{ secrets.STATIC_STORYBOOK_TOKEN }}
       # use nodejs
       - name: Use Node.js
         uses: actions/setup-node@v3
