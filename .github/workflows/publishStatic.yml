@@ -6,8 +6,8 @@ on:
     branches:
       - "main"
   schedule:
-    # triggers the workflow to run at 5:30 UTC every Monday
-    - cron: "30 5 * * 1"
+    # triggers the workflow to run at 5:30 UTC every Monday, Wednesday, and Friday
+    - cron: "30 5 * * 1,3,5"
 
 # the jobs to run this ci
 jobs:
