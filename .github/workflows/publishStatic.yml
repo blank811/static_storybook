@@ -38,8 +38,8 @@ jobs:
       - name: Install dependenices
         run: |
           cp -rf main/public ./
-          npm install
-          npm run build-storybook
+          yarn
+          yarn build-storybook
           sed -i "s/<head>/<head><link rel='icon' href='favicon.ico' type='image\/x-icon'/" storybook-static/index.html
       # Deploy github page
       - name: Deploy 🚀
